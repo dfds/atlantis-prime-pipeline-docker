@@ -1,4 +1,4 @@
-FROM dfdsdk/prime-pipeline:0.6.3
+FROM dfdsdk/prime-pipeline:0.6.4
 
 # ========================================
 # Atlantis
@@ -20,7 +20,7 @@ RUN apt-get update \
     && ln -s /usr/bin/dumb-init /bin/dumb-init
 
 # Finally actually atlantis
-ENV ATLANTIS_VERSION=0.16.0
+ENV ATLANTIS_VERSION=0.17.3
 
 RUN curl -L https://github.com/runatlantis/atlantis/releases/download/v${ATLANTIS_VERSION}/atlantis_linux_amd64.zip -o atlantis.zip \
     && unzip atlantis.zip \
