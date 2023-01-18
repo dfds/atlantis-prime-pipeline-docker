@@ -1,4 +1,4 @@
-FROM dfdsdk/prime-pipeline:0.6.14
+FROM dfdsdk/prime-pipeline:0.6.18
 
 # ========================================
 # Atlantis
