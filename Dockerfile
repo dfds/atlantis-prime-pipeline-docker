@@ -20,7 +20,7 @@ RUN apt-get update \
     && ln -s /usr/bin/dumb-init /bin/dumb-init
 
 # Finally actually atlantis
-ENV ATLANTIS_VERSION=0.23.5
+ENV ATLANTIS_VERSION=0.27.0
 
 RUN curl -L https://github.com/runatlantis/atlantis/releases/download/v${ATLANTIS_VERSION}/atlantis_linux_amd64.zip -o atlantis.zip \
     && unzip atlantis.zip \
