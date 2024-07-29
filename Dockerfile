@@ -4,13 +4,7 @@ FROM dfdsdk/prime-pipeline:0.6.40
 # Atlantis
 # ========================================
 
-# User setup from atlantis base
-RUN addgroup atlantis \
-    && useradd -m -r -g atlantis atlantis \
-    && usermod -a -G root atlantis \
-    && chown atlantis:root /home/atlantis/ \
-    && chmod g=u /home/atlantis/ \
-    && chmod g=u /etc/passwd
+
 
 # Dependencies for entrypoint script from atlantis base
 RUN apt-get update \
@@ -34,8 +28,15 @@ RUN curl -L https://github.com/runatlantis/atlantis/archive/v${ATLANTIS_VERSION}
     && mv atlantis-${ATLANTIS_VERSION}/docker-entrypoint.sh /usr/local/bin/ \
     && rm -rf atlantis-${ATLANTIS_VERSION}
 
+
+
+# Create home dir and assign permissions
+RUN useradd --create-home --user-group --shell /bin/bash atlantis && \
+    chown atlantis:root /home/atlantis/ && \
+    chmod u+rwx /home/atlantis/
+
 # ========================================
 # END
 # ========================================
-
+USER atlantis
 ENTRYPOINT [ "bash", "docker-entrypoint.sh" ]
