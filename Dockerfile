@@ -31,7 +31,7 @@ RUN curl -L https://github.com/runatlantis/atlantis/archive/v${ATLANTIS_VERSION}
 
 
 # Create home dir and assign permissions
-RUN useradd --create-home --user-group --shell /bin/bash atlantis && \
+RUN useradd -u 200 --create-home --user-group --shell /bin/bash atlantis && \
     chown atlantis:root /home/atlantis/ && \
     chmod u+rwx /home/atlantis/
 
