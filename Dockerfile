@@ -1,10 +1,8 @@
-FROM dfdsdk/prime-pipeline:1.0.0
+FROM dfdsdk/prime-pipeline:2.0.0
 
 # ========================================
-# Atlantis
+# Atlantis https://github.com/runatlantis/atlantis/releases
 # ========================================
-
-
 
 # Dependencies for entrypoint script from atlantis base
 RUN apt-get update \
@@ -14,7 +12,7 @@ RUN apt-get update \
     && ln -s /usr/bin/dumb-init /bin/dumb-init
 
 # Finally actually atlantis
-ENV ATLANTIS_VERSION=0.27.2
+ENV ATLANTIS_VERSION=0.28.5
 
 RUN curl -L https://github.com/runatlantis/atlantis/releases/download/v${ATLANTIS_VERSION}/atlantis_linux_amd64.zip -o atlantis.zip \
     && unzip atlantis.zip \
@@ -28,8 +26,6 @@ RUN curl -L https://github.com/runatlantis/atlantis/archive/v${ATLANTIS_VERSION}
     && mv atlantis-${ATLANTIS_VERSION}/docker-entrypoint.sh /usr/local/bin/ \
     && rm -rf atlantis-${ATLANTIS_VERSION}
 
-
-
 # Create home dir and assign permissions
 RUN useradd -u 200 --create-home --user-group --shell /bin/bash atlantis && \
     chown atlantis:root /home/atlantis/ && \
@@ -38,5 +34,6 @@ RUN useradd -u 200 --create-home --user-group --shell /bin/bash atlantis && \
 # ========================================
 # END
 # ========================================
+
 USER atlantis
 ENTRYPOINT [ "bash", "docker-entrypoint.sh" ]
