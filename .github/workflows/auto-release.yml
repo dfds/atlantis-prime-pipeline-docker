@@ -3,6 +3,12 @@ name: Auto release on merge
 on:
   push:
     branches: ["master", "main"]
+    paths-ignore:
+      - '.github/**'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - 'README.md'
+      - 'renovate.json'
 
 jobs:
   auto-release:
