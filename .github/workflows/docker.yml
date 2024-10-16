@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - 'README.md'
+      - 'renovate.json'
 
   release:
     types: [published]
