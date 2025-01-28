@@ -1,4 +1,4 @@
-FROM dfdsdk/prime-pipeline:2.1.1
+FROM dfdsdk/prime-pipeline:2.1.2
 
 # ========================================
 # Atlantis https://github.com/runatlantis/atlantis/releases
@@ -11,7 +11,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Finally actually atlantis
-ENV ATLANTIS_VERSION=0.30.0
+ENV ATLANTIS_VERSION=0.32.0
 
 RUN export BUILD_ARCHITECTURE=$(uname -m); \
     if [ "$BUILD_ARCHITECTURE" = "x86_64" ]; then export BUILD_ARCHITECTURE_ARCH=amd64; fi; \
