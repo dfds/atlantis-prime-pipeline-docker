@@ -1,4 +1,4 @@
-FROM dfdsdk/prime-pipeline:2.2.1
+FROM dfdsdk/prime-pipeline:2.2.3
 
 # ========================================
 # Atlantis https://github.com/runatlantis/atlantis/releases
